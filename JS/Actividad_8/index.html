@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+        var x=[1,4,6,3,2,1,0,-4];
+        for(var y1=0; y1<8; y1++){
+            for(var y2=0; y2<7; y2++){
+                if(x[y2]>x[y2+1]){
+                    var z;
+                    z=x[y2]; x[y2]=x[y2+1]; x[y2+1]=z;
+                }
+                    
+            }
+        }
+        alert(x[0]+" "+x[1]+" "+x[2]+" "+x[3]+" "+x[4]+" "+x[5]+" "+x[6]+" "+x[7]);
+   </script> 
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Juego</title>
+</head>
+<body>
+    <script>
+        var ganados=0;
+        var perdidos=0;
+        var x;
+        var y;
+        var seleccion;
+
+        while(1){
+            x=prompt('Ingresa algo');
+            y= Math.floor(Math.random()*3)+1;
+            if(y==1){
+                seleccion="piedra";
+            }
+            if(y==2){
+                seleccion="papel";
+            }
+            if(y==3){
+                seleccion="tijera";
+            }
+            if(x=="piedra"&&seleccion=="tijera"){
+                ganados++;
+                alert("Jugador:\t" + x + "\nPC:\t" + seleccion + "\n\nGanaste!!!\n\n" + "Ganados: " + ganados + "\tPerdidos: "+ perdidos);
+            }else{
+                if(x=="papel"&&seleccion=="piedra"){
+                    ganados++;
+                    alert("Jugador:\t" + x + "\nPC:\t" + seleccion + "\n\nGanaste!!!\n\n" + "Ganados: " + ganados + "\tPerdidos: "+ perdidos);
+                }else{
+                    if(x=="tijera"&&seleccion=="papel"){
+                        ganados++;
+                        alert("Jugador:\t" + x + "\nPC:\t" + seleccion + "\n\nGanaste!!!\n\n" + "Ganados: " + ganados + "\tPerdidos: "+ perdidos);
+                    }else{
+                        if(x==seleccion){
+                            alert("Jugador:\t" + x + "\nPC:\t" + seleccion + "\n\nEmpate ._.\n\n" + "Ganados: " + ganados + "\tPerdidos: "+ perdidos);
+                        }else{
+                            if(seleccion!="piedra"||seleccion!="papel"||seleccion!="tijera"){}
+                            else{
+                                perdidos++;
+                                alert("Jugador:\t" + x + "\nPC:\t" + seleccion + "\n\nPerdiste :(\n\n" + "Ganados: " + ganados + "\tPerdidos: "+ perdidos);
+                            }
+                        }
+                    }
+                }    
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
