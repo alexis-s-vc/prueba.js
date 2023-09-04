@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Funciones y manipulacion de datos</title>
+    <title>Calculadora</title>
 </head>
 <body>
     <script>
-        function sumar(){
-            return a+b;
+        var r=0;
+        const sumar=(a,b)=> a + b;
+        const resta=(a,b)=> a-b;
+        const multiplicar=(a,b)=> a*b;
+        const dividir=(a,b) => {
+            try{
+                if(b==0){throw new Error("No se puede dividir entre cero");}
+                return a/b; 
+            }catch(Error){
+                alert(Error);
+            }
         }
-        var a=prompt('a: ');
-        var b=prompt('b: ');
-        c=sumar();
-        alert(c);
+        while(1){
+            try{
+                var x=prompt("1: Sumar 2 números\n2: Restar 2 números\n3: Multiplicar 2 números\n4: Dividir 2 números");
+
+                switch(x){
+                    case "1":
+                        var x1=prompt("Ingrese el primer digito:");
+                        var x2=prompt("Ingrese el segundo digito:");
+                        r=sumar(parseFloat(x1),parseFloat(x2r));
+                        break;
+                    case "2":
+                        var x1=prompt("Ingrese el primer digito:");
+                        var x2=prompt("Ingrese el segundo digito:");
+                        r=resta(x1,x2);
+                        break; 
+                    case "3":
+                        var x1=prompt("Ingrese el primer digito:");
+                        var x2=prompt("Ingrese el segundo digito:");
+                        r=multiplicar(x1,x2);
+                        break;
+                    case "4":
+                        var x1=prompt("Ingrese el primer digito:");
+                        var x2=prompt("Ingrese el segundo digito:");
+                        r=dividir(x1,x2);
+                            break;
+                    default:
+                        throw new Error("Tecla incorrecta"); 
+                }
+                alert("Respuesta " + r);
+            }catch(Error){
+                alert(Error);
+            }
+        }
+            
+        
     </script>
 </body>
 </html>

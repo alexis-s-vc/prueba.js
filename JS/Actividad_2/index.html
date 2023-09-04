@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Usuario</title>
+</head>
+<body>
+    <script>
+        const usuario="Alexis", contraseña=11112;
+        try{
+            var x=prompt("Ingrese su usuario:");
+            if(x!=usuario){
+                throw new Error("Usuario no reconocido");
+            }
+            x=prompt("Ingrese su contraseña:");
+            if(x!=contraseña){
+                throw new Error("Contraseña incorrecta");
+            }
+            var y=1;
+        }catch(Error){alert(Error.message);}
+        if(y==1)
+        alert("Usted a iniciado secion");
+    </script>
+</body>
+</html>

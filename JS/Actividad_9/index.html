@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Palabras con a</title>
+</head>
+<body>
+    <script>
+        function palabrasConA() {
+        const palabras = ["hola", "adiós", "manzana", "banana", "casa", "programa", "javascript", "si", "no"];
+        const palabrasConLetraA = [];
+        for (let i = 0; i < palabras.length; i++) {
+            let palabra = palabras[i];
+            if (palabra.includes('a') || palabra.includes('A')) {
+                palabrasConLetraA.push(palabra);
+            }
+        }
+
+         alert('Palabras predeterminadas que contienen la letra "a":' + " " + palabrasConLetraA[0] +" " + palabrasConLetraA[1] +" " + palabrasConLetraA[2] +" " + palabrasConLetraA[3] +" " + palabrasConLetraA[4] +" " + palabrasConLetraA[5] +" " + palabrasConLetraA[6]);
+        }
+        palabrasConA();
+
+    </script>
+</body>
+</html>

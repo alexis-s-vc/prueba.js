@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Menor a mayor y mayor a menor</title>
 </head>
 <body>
    <script>
@@ -16,7 +16,18 @@
                     
             }
         }
-        alert(x[0]+" "+x[1]+" "+x[2]+" "+x[3]+" "+x[4]+" "+x[5]+" "+x[6]+" "+x[7]);
+        /*alert(x[0]+" "+x[1]+" "+x[2]+" "+x[3]+" "+x[4]+" "+x[5]+" "+x[6]+" "+x[7]);*/
+        alert(x[0]);
+        for(var y1=0; y1<8; y1++){
+            for(var y2=0; y2<7; y2++){
+                if(x[y2]<x[y2+1]){
+                    var z;
+                    z=x[y2]; x[y2]=x[y2+1]; x[y2+1]=z;
+                }
+                    
+            }
+        }
+        alert(x[0]);
    </script> 
 </body>
 </html>
