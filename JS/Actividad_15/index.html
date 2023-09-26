@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador de texto</title>
+</head>
+<body>
+    <header> 
+        <p>Encriptador de texto</p>
+    </header>
+    <main>
+        <section>
+            <textarea id="inputText" cols="40" rows="12" placeholder="Ingrese el texto aquí"></textarea>
+            <p>	&#9432; Sólo letras minúsculas y sin acentos</p>
+            <div>
+                <button onclick="encriptar()">Encriptar</button>
+                <button onclick="desencriptar()">Desencriptar</button>
+            </div>
+        </section>
+
+        <section>
+            <span id="resultado">Resultado</span>
+            <div>
+                <img alt="Imagen buscando texto">
+                <span>Ningún mensaje fue encontrado</span>
+                <span>Ingresa el texto que desees encriptar o desencriptar.</span>
+            </div>
+            <div>
+                <button id="copiarBtn" onclick="copiarResultado()">Copiar</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function encriptar() {
+            const inputText = document.getElementById("inputText").value;
+            let resultado = "";
+            for (let i = 0; i < inputText.length; i++) {
+                switch (inputText[i]) {
+                    case 'e':
+                        resultado += 'enter';
+                        break;
+                    case 'i':
+                        resultado += 'imes';
+                        break;
+                    case 'a':
+                        resultado += 'ai';
+                        break;
+                    case 'o':
+                        resultado += 'ober';
+                        break;
+                    case 'u':
+                        resultado += 'ufat';
+                        break;
+                    default:
+                        resultado += inputText[i];
+                }
+            }
+            document.getElementById("resultado").textContent = resultado;
+        }
+
+        function desencriptar() {
+            const inputText = document.getElementById("inputText").value;
+            let resultado = "";
+            let i = 0;
+            while (i < inputText.length) {
+                switch (inputText.substr(i, 5)) {
+                    case 'enter':
+                        resultado += 'e';
+                        i += 5;
+                        break;
+                    case 'imes':
+                        resultado += 'i';
+                        i += 4;
+                        break;
+                    case 'ai':
+                        resultado += 'a';
+                        i += 2;
+                        break;
+                    case 'ober':
+                        resultado += 'o';
+                        i += 4;
+                        break;
+                    case 'ufat':
+                        resultado += 'u';
+                        i += 4;
+                        break;
+                    default:
+                        resultado += inputText[i];
+                        i++;
+                }
+            }
+            document.getElementById("resultado").textContent = resultado;
+        }
+
+        function copiarResultado() {
+            const resultado = document.getElementById("resultado").textContent;
+            const tempInput = document.createElement("textarea");
+            document.body.appendChild(tempInput);
+            tempInput.value = resultado;
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+        }
+    </script>
+</body>
+</html>

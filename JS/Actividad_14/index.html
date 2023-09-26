@@ -2,108 +2,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encriptador de texto</title>
+    <title>Carousel</title>
+    <style>
+        body{
+            background-image: url(./image-Cpdtdm5Yv-transformed.png);
+        }
+        .box{
+            background-color:gray;
+            width: 31.5rem;
+            height: 20rem;
+            border: 5rem;
+            border-style: double;
+            padding: 1rem;
+            margin: 0 auto;
+            align-items: center;
+            align-content: center;
+
+        }
+        .carousel-container {
+            position: relative;
+            width: 500px;
+            overflow: hidden;
+            border-style: solid;
+            align-items: center;
+            margin: 0 auto;
+        }
+        
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-button {
+            cursor: pointer;
+            margin: 0 auto;
+            align-content: center;
+        }
+        button{
+            background-color: lightseagreen;
+            border: 2rem;
+            padding: 5rem, 10rem;
+            margin: 0 auto;
+            cursor: pointer;
+            object-position: 0 auto;
+            width: 5rem;
+            height: 2rem;
+            border-radius: 5rem;
+            font-family: cursive;
+            font: bold;
+        }
+    </style>
 </head>
 <body>
-    <header> 
-        <p>Encriptador de texto</p>
-    </header>
-    <main>
-        <section>
-            <textarea id="inputText" cols="40" rows="12" placeholder="Ingrese el texto aquí"></textarea>
-            <p>	&#9432; Sólo letras minúsculas y sin acentos</p>
-            <div>
-                <button onclick="encriptar()">Encriptar</button>
-                <button onclick="desencriptar()">Desencriptar</button>
+    <div class="box">
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="./figma.jpg" alt="Imagen 1">
+                <img src="./figma2.jpg" alt="Imagen 2">
+                <img src="./figma3.jpg" alt="Imagen 3">
             </div>
-        </section>
-
-        <section>
-            <span id="resultado">Resultado</span>
-            <div>
-                <img alt="Imagen buscando texto">
-                <span>Ningún mensaje fue encontrado</span>
-                <span>Ingresa el texto que desees encriptar o desencriptar.</span>
-            </div>
-            <div>
-                <button id="copiarBtn" onclick="copiarResultado()">Copiar</button>
-            </div>
-        </section>
-    </main>
-
+        </div>
+        <button class="carousel-button" onclick="prevSlide()">Anterior</button>
+        <button class="carousel-button" onclick="nextSlide()">Siguiente</button>
+    </div>
     <script>
-        function encriptar() {
-            const inputText = document.getElementById("inputText").value;
-            let resultado = "";
-            for (let i = 0; i < inputText.length; i++) {
-                switch (inputText[i]) {
-                    case 'e':
-                        resultado += 'enter';
-                        break;
-                    case 'i':
-                        resultado += 'imes';
-                        break;
-                    case 'a':
-                        resultado += 'ai';
-                        break;
-                    case 'o':
-                        resultado += 'ober';
-                        break;
-                    case 'u':
-                        resultado += 'ufat';
-                        break;
-                    default:
-                        resultado += inputText[i];
-                }
-            }
-            document.getElementById("resultado").textContent = resultado;
+        const container = document.querySelector('.carousel-container');
+        const slide = document.querySelector('.carousel-slide');
+        const images = document.querySelectorAll('.carousel-slide img');
+        const buttons = document.querySelectorAll('.carousel-button');
+        let currentIndex = 0;
+
+        function updateSlide() {
+            slide.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
-        function desencriptar() {
-            const inputText = document.getElementById("inputText").value;
-            let resultado = "";
-            let i = 0;
-            while (i < inputText.length) {
-                switch (inputText.substr(i, 5)) {
-                    case 'enter':
-                        resultado += 'e';
-                        i += 5;
-                        break;
-                    case 'imes':
-                        resultado += 'i';
-                        i += 4;
-                        break;
-                    case 'ai':
-                        resultado += 'a';
-                        i += 2;
-                        break;
-                    case 'ober':
-                        resultado += 'o';
-                        i += 4;
-                        break;
-                    case 'ufat':
-                        resultado += 'u';
-                        i += 4;
-                        break;
-                    default:
-                        resultado += inputText[i];
-                        i++;
-                }
-            }
-            document.getElementById("resultado").textContent = resultado;
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateSlide();
         }
 
-        function copiarResultado() {
-            const resultado = document.getElementById("resultado").textContent;
-            const tempInput = document.createElement("textarea");
-            document.body.appendChild(tempInput);
-            tempInput.value = resultado;
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateSlide();
         }
+
+
+        updateSlide();
     </script>
 </body>
 </html>

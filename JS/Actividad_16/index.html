@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Compra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .product button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background-color: #45a049;
+        }
+        .cart {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        .cart h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+        }
+        .cart-item button {
+            background-color: #FF5733;
+            color: #fff;
+            border: none;
+            padding: 3px 8px;
+            cursor: pointer;
+        }
+        .cart-item button:hover {
+            background-color: #D74226;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Simulación de Compra</h1>
+    </header>
+    <div class="container">
+        <h2>Productos</h2>
+        <div class="product" id="product-1">
+            <span>Producto 1 - $20.00</span>
+            <button onclick="agregarAlCarrito('Producto 1', 20)">Comprar</button>
+        </div>
+        <div class="product" id="product-2">
+            <span>Producto 2 - $30.00</span>
+            <button onclick="agregarAlCarrito('Producto 2', 30)">Comprar</button>
+        </div>
+        <div class="product" id="product-3">
+            <span>Producto 3 - $15.00</span>
+            <button onclick="agregarAlCarrito('Producto 3', 15)">Comprar</button>
+        </div>
+        <div class="cart">
+            <h2>Carrito de Compras</h2>
+            <div id="cart-items">
+            </div>
+        </div>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function agregarAlCarrito(producto, precio) {
+            const cartItems = document.getElementById("cart-items");
+            const cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+
+            const itemText = document.createElement("span");
+            itemText.textContent = `${producto} - $${precio.toFixed(2)}`;
+            cartItem.appendChild(itemText);
+
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Eliminar";
+            removeButton.onclick = function () {
+                cartItems.removeChild(cartItem);
+            };
+            cartItem.appendChild(removeButton);
+
+            cartItems.appendChild(cartItem);
+
+            const resultado = document.getElementById("resultado");
+            resultado.innerHTML += `<p>Agregado al carrito: ${producto} por $${precio.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajas sorpresa</title>
+
+    <style>
+        body{
+            background-image: url().jpg);
+            background-color: red;
+            margin: 0 auto;
+            image-orientation: center;
+            height: 15px;
+            width: ;
+        }
+        h1{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            text-decoration: solid;
+        }
+
+        .caja, .cajaOculta {
+            width: 150px;
+            display: inline-block;
+            margin: 10px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 5rem;
+            height: 20rem;
+            width: 22rem;
+
+        }
+        .caja:hover, .cajaOculta:hover {
+            cursor: pointer;
+        }
+        .cajaOculta, .contenido, .sorpresa {
+            display: none;
+        }
+        .contenido {
+            position: absolute;
+            top: 0;
+            background-color: rgba(0, 0, 255, 0.493);
+            width: 80rem;
+            height: 70rem;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .contenido2 {
+            position: absolute;
+            top: 0;
+            background-color: rgba(0, 0, 255, 0.493);
+            width: rem;
+            height: 2000rem;
+            justify-content: center;
+            align-items: center;
+        }
+        .contenido3 {
+            position: absolute;
+            top: 0;
+            background-color: rgba(0, 0, 255, 0.493);
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .contenido4 {
+            position: absolute;
+            top: 0;
+            background-color: rgba(0, 0, 255, 0.493);
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .contenido5 {
+            position: absolute;
+            top: 0;
+            background-color: rgba(0, 0, 255, 0.493);
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .contenido6 {
+            position: absolute;
+            top: 0;
+            background-color: rgba(0, 0, 255, 0.493);
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sorpresa {
+            width: 500px;
+            height: 70vh;
+            background: #40adec;
+        }
+        .container{
+            
+            background-color: blue; 
+            width: 80rem ;
+            height: 60rem;
+            margin: 0 auto;
+            border-radius: 5rem;
+            align-content: center;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Toque un Escudo de la unam</h1>
+        <div class="cajas" id="cajas-container">
+        </div>
+        <div class="contenido">
+            <div class="sorpresa">
+                ¡Ganaste!
+            </div>
+        </div>
+    </div>
+    <script>
+        function abrir(evento) {
+            const cajaId = evento.target.id;
+            document.getElementById(cajaId).style.display = 'none';
+            const cajaOcultaId = "caja" + cajaId.substr(4);
+            document.getElementById(cajaOcultaId).style.display = 'inline';
+            document.getElementsByClassName("contenido")[0].style.display = "flex";
+            document.getElementsByClassName("sorpresa")[0].style.display = "inline";
+
+            document.getElementsByClassName("contenido")[0].addEventListener('click', (evento) => {
+                if (evento.target.closest(".contenido")) {
+                    document.getElementsByClassName("contenido")[0].style.display = 'none';
+                }
+            });
+        }
+
+        const cajasContainer = document.getElementById('cajas-container');
+
+        for (let i = 1; i <= 6; i++) {
+            const caja = document.createElement('img');
+            caja.src = ".img/descarga.png";
+            caja.alt = "";
+            caja.className = "caja";
+            caja.id = "caja" + i;
+            caja.addEventListener("click", abrir);
+            cajasContainer.appendChild(caja);
+        }
+    </script>
+</body>
+</html>

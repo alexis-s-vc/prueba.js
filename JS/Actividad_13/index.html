@@ -1,56 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/.css">
+    <title>Login</title>
+    <style>
+        body{
+            background-image: url(../Actividad_11/IMG-20230919-WA0036\ \(1\).jpg);
+            image-orientation: from-image;
+        }
+        h1{
+            font-style: italic;
+            font-family: cursive; 
+        }
+        h2{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-style: oblique;
+            font: bold;
+        }
+        .formulario{
+            background-color: gray;
+            margin-top: 0 auto;
+            height: 20rem;
+            width: 20rem;
+            align-content: center;
+            border-radius: 100rem;
+            text-align: center;
+            padding: 10rem;
+
+        }
+        .box-form{
+            background-color: lightblue;
+            padding: 2rem;
+            border-radius: 2rem;
+            width: 10rem;
+            height: 5rem;
+            align-content: center;
+            margin: 0 auto;
+        }
+        button{
+            background-color: yellow;
+            border-color: gold;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 5 rem;
+            border-radius: 5rem;
+            
+        }
+
+    </style>
 </head>
 <body>
-    <button class="displayGaleria" onclick="displayGallery()">Abrir galeria de imagenes </button>
-    <div class="gallery-container" id="carousel">
-        <div class="carousel" data-carousel>
-            <button class="carousel button prev" data-carousel-button>&#8249;</button>
-            <button class="carousel button prev" data-carousel-button>&#8250;</button>
-            
-            <ul data-slides>
-                <li class="slide" data-active>
-                    <img src="img/th.jfif" alt="">
-                </li>
-                <li class="slide">
-                    <img src="img/unnamed.jpg" alt="">
-                </li>
-                <li class="slide">
-                    <img src="img/WiFi.webp" alt="">
-                </li>
-            </ul>
-        </div>
+    <div class="formulario">
+        <form>
+            <h1>Inicio de Sesión</h1>
+            <div class="box-form">
+                <div class="inputs-container">
+                    <label for="email-input">Email</label>
+                    <input text type="email" id="email-input">
+                </div>
+                <div class="inputs-container">
+                    <label for="password-input">Contraseña</label>
+                    <input type="password" id="password-input">
+                </div>
+                <button id="btn-ingresar">
+                    Ingresar
+                </button>
+            </div>
+        </form>
     </div>
     <script>
-        function displayGallery(){
-            document.getElementById('carousel').style.display='inline';
+        function ingresar(){
+            const emailInput = document.getElementById('email-input')
+            const passwordInput = document.getElementById('password-input')
+
+            const emailCorrecto = 'luis@gmail.com'
+            const passwordCorrecto = '12345678'
+
+            if (
+                emailInput.value === '' ||
+                passwordInput.value === ''
+            ){
+                alert('Falta algún campo')
+            }
+
+            if(
+                !emailInput.value.includes('@') ||
+                passwordInput.value.length < 8
+            ){
+                alert('Los campos requeridos no cumplen con las especifcaciones')
+            }
+
+            if (
+                passwordInput.value === passwordCorrecto &&
+                emailInput.value === emailCorrecto 
+            ){
+                alert('Tus datos son correctos')
+            } else {
+                alert('Tus datos son incorrectos')
+            }
+
         }
-        const buttons=document.querySelectorAll('[data-carousel-button]');
 
-        buttons.forEach(button =>{
-            button.addEventListener("click", ()=>{
-                const offset = button.dataset.carouselButton === "next" ? 1 : -1;
-                const slides = button.closest('[data-carousel]').querySelector('[data-slides]');
-                const activeSlide = slides.querySelector('[data-active]');
-                let newIndex = [...slides.children].index0f(activeSlide) + offset;
-                if(newIndex<0) newIndex=slides.children.length -1;
-                if(newIndex>=slides.children.length) newIndex = 0;
-
-                slides.children[newIndex].dataset.active = true;
-                delete activeSlide.dataset.active;
-
-            })
-        })
-        document.addEventListener("keyup", (evento)=>{
-            if(evento.keyCode === 27){
-                document.getElementById('carousel').style.display='none';
-            }else return;
-        })
+        document.getElementById('btn-ingresar').addEventListener('click', ingresar)
     </script>
 </body>
 </html>
